@@ -3,6 +3,10 @@ import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
+	// Uncomment when API contracts are defined and MSW handlers are registered:
+	// test: {
+	// 	setupFiles: ['./src/shared/api/mocks/setup.ts'],
+	// },
 	plugins: [
 		react({
 			babel: {
