@@ -1,0 +1,42 @@
+:root {
+	color-scheme: light;
+	background: #f8fafc;
+	font-synthesis: none;
+	text-rendering: optimizelegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	min-width: 320px;
+	min-height: 100vh;
+	background: linear-gradient(180deg, rgba(241, 245, 249, 0.86), rgba(248, 250, 252, 0)), #f8fafc;
+}
+
+.app-header {
+	position: sticky;
+	top: 0;
+	z-index: 10;
+	border-bottom: 1px solid #e2e8f0;
+	background: rgba(248, 250, 252, 0.9);
+	backdrop-filter: blur(12px);
+}
+
+.app-header__link {
+	border-radius: 6px;
+	color: #475569;
+	font-size: 0.875rem;
+	font-weight: 600;
+	padding: 0.5rem 0.75rem;
+}
+
+.app-header__link:hover,
+.app-header__link.active {
+	background: #e2e8f0;
+	color: #0f172a;
+}
