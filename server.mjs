@@ -81,10 +81,28 @@ async function main() {
 
 	createServer(async (request, response) => {
 		try {
+			if (vite) {
+				await new Promise((resolve, reject) => {
+					vite.middlewares(request, response, (err) => {
+						if (err) reject(err)
+						else resolve()
+					})
+				})
+				if (response.writableEnded) return
+			}
+
 			if (await serveAsset(request, response))
 				return
 
 			const url = request.url || '/'
+
+			const pathname = new URL(url, 'http://localhost').pathname
+			if (pathname.startsWith('/.well-known/')) {
+				response.writeHead(404, { 'Content-Type': 'text/plain' })
+				response.end('Not Found')
+				return
+			}
+
 			const template = await readTemplate(url, vite)
 			const { render } = await loadRenderer(vite)
 			const rendered = await render(url)

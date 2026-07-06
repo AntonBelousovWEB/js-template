@@ -1,10 +1,11 @@
 import { Badge, Button, Card, Group, Stack, Text, Title } from '@mantine/core'
+import { reatomComponent } from '@reatom/react'
 import { useService } from '@/app/container/container.context'
 import { TemplateModuleStore } from '@/entities/templateModule/templateModule.store'
 import { TemplateCatalogEntry } from '@/features/templateCatalog/templateCatalog.entry'
 import { TemplateCatalogInjector } from '@/features/templateCatalog/templateCatalog.injector'
 
-export function HomePage() {
+export const HomePage = reatomComponent(() => {
 	const templateModuleStore = useService(TemplateModuleStore)
 	const selectedItems = templateModuleStore.selectedItems()
 
@@ -56,4 +57,4 @@ export function HomePage() {
 			</TemplateCatalogInjector>
 		</Stack>
 	)
-}
+}, 'HomePage')
