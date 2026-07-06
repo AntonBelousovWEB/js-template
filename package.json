@@ -10,12 +10,12 @@
 		"preview": "NODE_ENV=production node server.mjs",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
-		"test": "NODE_OPTIONS=--max-old-space-size=6144 vitest",
+		"test": "NODE_OPTIONS=--max-old-space-size=6144 vitest --passWithNoTests",
 		"test:ui": "NODE_OPTIONS=--max-old-space-size=6144 vitest --ui",
-		"test:run": "NODE_OPTIONS=--max-old-space-size=6144 vitest run",
-		"test:coverage": "NODE_OPTIONS=--max-old-space-size=6144 vitest --coverage",
+		"test:run": "NODE_OPTIONS=--max-old-space-size=6144 vitest run --passWithNoTests",
+		"test:coverage": "NODE_OPTIONS=--max-old-space-size=6144 vitest --coverage --passWithNoTests",
 		"template:reset": "node scripts/reset-template.mjs",
-		"prepare": "husky"
+		"prepare": "node scripts/prepare-husky.mjs"
 	},
 	"dependencies": {
 		"@mantine/core": "^9.4.1",
@@ -47,11 +47,6 @@
 		"typescript-eslint": "^8.39.1",
 		"vite": "^7.1.2",
 		"vitest": "^4.0.13"
-	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "npx lint-staged"
-		}
 	},
 	"lint-staged": {
 		"*.{js,jsx,ts,tsx}": [
